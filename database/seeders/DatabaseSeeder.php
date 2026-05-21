@@ -15,11 +15,32 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $mhs = \App\Models\Mahasiswa::create([
+            'nim' => '2021001001',
+            'nama' => 'Budi Santoso',
+            'prodi' => 'Teknik Informatika',
+            'angkatan' => '2021',
+            'email' => 'budi@student.ac.id'
+        ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        \App\Models\Nilai::create([
+            'mahasiswa_id' => $mhs->id,
+            'mata_kuliah' => 'Pemrograman Web',
+            'kode_mk' => 'IF2201',
+            'nilai_angka' => 88.5,
+            'nilai_huruf' => 'A',
+            'sks' => 3,
+            'semester' => 'Ganjil 2023'
+        ]);
+
+        \App\Models\Nilai::create([
+            'mahasiswa_id' => $mhs->id,
+            'mata_kuliah' => 'Basis Data',
+            'kode_mk' => 'IF2102',
+            'nilai_angka' => 75.0,
+            'nilai_huruf' => 'B',
+            'sks' => 3,
+            'semester' => 'Ganjil 2023'
         ]);
     }
 }
